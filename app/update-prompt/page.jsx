@@ -6,6 +6,16 @@ import { Suspense } from 'react'
 
 import Form from "@components/Form"
 
+const UpdatePrompt = () => {
+    return (
+        <Suspense fallback={<><p>Loading...</p></>}>
+            <EditPrompt />
+        </Suspense>
+    )
+}
+
+export default UpdatePrompt;
+
 const EditPrompt = () => {
 
     const router = useRouter();
@@ -60,16 +70,13 @@ const EditPrompt = () => {
 
 
     return (
-        <Suspense>
-            <Form
-                type='Edit'
-                post={post}
-                setPost={setPost}
-                submitting={submitting}
-                handleSubmit={updatePrompt}
-            />
-        </Suspense>
+        <Form
+            type='Edit'
+            post={post}
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={updatePrompt}
+        />
+
     )
 }
-
-export default EditPrompt
